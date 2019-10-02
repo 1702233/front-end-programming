@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {AngularFireModule} from '@angular/fire';
+import {firebaseConfig} from '../environments/firebase.config';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { RouterModule, Routes} from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -16,6 +19,8 @@ import { BookingformComponent } from './modules/components/bookingform/bookingfo
 //core
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
+//services
+import { AuthguardService } from './core/services/authguard.service';
 
 const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
@@ -43,9 +48,13 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [
+    AuthguardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
