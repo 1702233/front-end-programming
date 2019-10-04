@@ -32,4 +32,7 @@ testem.log
 #System Files
 .DS_Store
 
+# Config and Security
+firebase.config.ts
+
 # End of https://www.gitignore.io/api/angular
