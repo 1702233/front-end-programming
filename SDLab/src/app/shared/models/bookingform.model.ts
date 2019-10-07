@@ -1,9 +1,10 @@
 export class Bookingform {
-    fullname: string;
+    name: string;
     googlemail : string;
     schoolmail : string;
     status : string;
-    starttime : Date;
-    endtime : Date;
+    begintime : string;
+    endtime : string;
+    opmerking : string;
 
 }

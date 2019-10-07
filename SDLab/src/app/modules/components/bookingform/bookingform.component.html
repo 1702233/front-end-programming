@@ -2,20 +2,48 @@
 <h2>Boek het SDLab</h2>
 <div class="row">
     <div class="col-md-5">
-        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)" ngNativeValidate>
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
             <div class="form-group">
-                <input name="fullname" id="fullname" #name="ngModel" [(ngModel)]="BookingformService.formData.fullname" class="form-control" placeholder="naam" required>
-                <div *ngIf="fullname.invalid && fullname.touched" class="validation-error">This field is required</div>
+                <label>naam</label>
+                <input name="name" id="name" #name="ngModel" [(ngModel)]="service.formData.name" class="form-control" placeholder="naam" required>
+                <div *ngIf="name.invalid && name.touched" class="validation-error">This field is required</div>
             </div>
+
+            <div class="form-group">
+                <label>begintijd</label>
+                <input name="begintime" type="datetime-local" id="begintime" #begintime="ngModel" [(ngModel)]="service.formData.begintime" class="form-control" value="2018-10-20T16:30" required>
+                <div *ngIf="begintime.invalid && begintime.touched" class="validation-error">This field is required</div>
+            </div>
+
+            <div class="form-group">
+                <label>eindtijd</label>
+                <input name="endtime" type="datetime-local" id="endtime" #endtime="ngModel" [(ngModel)]="service.formData.endtime" class="form-control" ng-init="value='2018-10-20T19:30'" required>
+                <div *ngIf="endtime.invalid && endtime.touched" class="validation-error">This field is required</div>
+            </div>
+
+            <div class="form-group">
+                    <label>Opmerking (optioneel)</label>
+                    <input name="opmerking" id="opmerking" #opmerking="ngModel" [(ngModel)]="service.formData.opmerking" class="form-control">
+                </div>
+            
+            <!-- todo: add mails so they are added to database when inserted. -->
             
             <div class="form-group">
-                <input name="schoolmail" type="email" id="schoolmail" #schoolmail="ngModel" [(ngModel)]="BookingformService.formData.schoolmail" class="form-control" placeholder="schoolmail@student.hu.nl" required>
+                <label>Schoolmail</label>
+                <input name="schoolmail" id="schoolmail" #schoolmail="ngModel" [(ngModel)]="service.formData.schoolmail" class="form-control" placeholder="schoolmail@student.hu.nl" readonly>
                 <div *ngIf="schoolmail.invalid && schoolmail.touched" class="validation-error">This field is required</div>
             </div>
 
             <div class="form-group">
-                <input name="gmail" id="gmail" #gmail="ngModel" [(ngModel)]="BookingformService.formData.gmail" class="form-control" placeholder="gmail@gmail.com" required>
-                <div *ngIf="gmail.invalid && gmail.touched" class="validation-error">This field is required</div>
+                <label>Gmail</label>
+                <input name="googlemail" id="googlemail" #googlemail="ngModel" [(ngModel)]="service.formData.googlemail" class="form-control" placeholder="gmail@gmail.com" readonly>
+                <div *ngIf="googlemail.invalid && googlemail.touched" class="validation-error">This field is required</div>
+            </div>
+
+            <div class="form-group">
+                <label>status</label>
+                <input name="status" id="status" #status="ngModel" [(ngModel)]="service.formData.status" class="form-control" readonly>
+                <div *ngIf="status.invalid && status.touched" class="validation-error">This field is required</div>
             </div>
 
             <div class="form-group">
