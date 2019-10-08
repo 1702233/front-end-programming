@@ -32,7 +32,7 @@ const appRoutes: Routes = [
     { path : 'login', component : LoginpageComponent },
     { path : 'home', component : HomeComponent },
     { path : 'booking-overview', component : BookingoverviewComponent },
-    { path: 'register', component : RegisterpageComponent }
+    { path: 'register', component : RegisterpageComponent },
     { path : 'booking-overview', component : BookingoverviewComponent },
     { path : '', redirectTo: '/login', pathMatch: 'full' }
   ];
