@@ -1,7 +1,59 @@
+<!-- <h1>Registeren voor het SD-Lab</h1>
+<form #form="ngForm" autocomplete="off">
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+    <div class="form-group">
+        <input name="studentenmail" #studentenmail="ngModel" [(ngModel)]="service.formData.studentenmail"
+            class="form-control" placeholder="Studentenmail" required>
+        <div *ngIf="studentenmail.invalid && studentenmail.touched" class="validation-error">Dit veld is verplicht!
+        </div>
+    </div>
+    <div class="form-group">
+        <input name="studentennummer" #studentennummer="ngModel" [(ngModel)]="service.formData.studentennummer"
+            class="form-control" placeholder="Studentennummer">
+    </div>
+    <div class="form-group">
+        <input name="voornaam" #voornaam="ngModel" [(ngModel)]="service.formData.voornaam" class="form-control"
+            placeholder="Voornaam">
+    </div>
+    <div class="form-group">
+        <input name="achternaam" #achternaam="ngModel" [(ngModel)]="service.formData.achternaam" class="form-control"
+            placeholder="Achternaam">
+    </div>
+    <div class="form-group">
+        <button type="submit" [disabled]="form.invalid"
+            class="submit btn btn-lg btn-block btn-info">Registreren</button>
+    </div>
+</form> -->
+<h2>Registreren voor het SD-Lab</h2>
+
 <div>
-    <input type="email" placeholder="Studentenmail" id="studentenmail">
-    <input type="number" max="6" placeholder="Studentennummer" id="studentennummer">
-    <input type="text" placeholder="Voornaam" id="voornaam">
-    <input type="text" placeholder="Achternaam" id="achternaam">
-    <button (click)="sendRegistration()">Register!</button>
+    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+        <div class="form-group">
+            <label>studentenmail</label>
+            <input name="studentenmail" id="studentenmail" #studentenmail="ngModel" [(ngModel)]="service.formData.studentenmail" class="form-control" placeholder="Studentenmail" required>
+            <div *ngIf="name.invalid && name.touched" class="validation-error">This field is required</div>
+        </div>
+
+        <div class="form-group">
+            <label>begintijd</label>
+            <input name="begintime" type="datetime-local" id="begintime" #begintime="ngModel" [(ngModel)]="service.formData.begintime" class="form-control" value="2018-10-20T16:30" required>
+            <div *ngIf="begintime.invalid && begintime.touched" class="validation-error">This field is required</div>
+        </div>
+
+        <div class="form-group">
+            <label>eindtijd</label>
+            <input name="endtime" type="datetime-local" id="endtime" #endtime="ngModel" [(ngModel)]="service.formData.endtime" class="form-control" ng-init="value='2018-10-20T19:30'" required>
+            <div *ngIf="endtime.invalid && endtime.touched" class="validation-error">This field is required</div>
+        </div>
+
+        <div class="form-group">
+                <label>Opmerking (optioneel)</label>
+                <input name="opmerking" id="opmerking" #opmerking="ngModel" [(ngModel)]="service.formData.opmerking" class="form-control">
+            </div>
+
+        <div class="form-group">
+            <button type="submit" [disabled]="form.invalid" class="submit btn btn-lg btn-block btn-info">Submit</button>
+        </div>
+    </form>
 </div>

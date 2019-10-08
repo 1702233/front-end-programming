@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { RegisterService } from 'src/app/core/services/register.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -9,18 +12,40 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class RegisterpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: RegisterService,
+    private firestore: AngularFirestore,
+    private toastr: ToastrService
+  ) { }
 
-  sendRegistration() {
-    let studentmail = (document.getElementById('studentenmail') as HTMLInputElement).value;
-    let studentennummer = (document.getElementById('studentennummer') as HTMLInputElement).value;
-    let voornaam = (document.getElementById('voornaam') as HTMLInputElement).value;
-    let achternaam = (document.getElementById('achternaam') as HTMLInputElement).value;
-    console.log('Added: ' + studentmail + ' ' + studentennummer + ' ' + voornaam + ' ' + achternaam + ' to registrationlist');
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+    }
 
+    this.service.formData = {
+      id: null,
+      studentenmail: ' ',
+      studentennummer: null,
+      voornaam: ' ',
+      achternaam: ' ',
+    };
+  }
+
+  onSubmit(form: NgForm) {
+    let data = Object.assign({}, form.value);
+    delete data.id;
+    if (form.value.id == null) {
+      this.firestore.collection('registraties').add(data);
+    } else {
+      this.firestore.doc('registraties/' + form.value.id).update(data);
+    }
+    this.resetForm(form);
+    this.toastr.success('submitted succesfully', 'Registratie gedaan.');
   }
 
   ngOnInit() {
+    this.resetForm();
   }
 
 }
