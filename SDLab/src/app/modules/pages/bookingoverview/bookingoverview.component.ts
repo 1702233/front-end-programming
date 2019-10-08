@@ -19,7 +19,7 @@ export class BookingoverviewComponent implements OnInit {
       this.service.getBoekingen().subscribe(actionArray =>{
         this.list = actionArray.map(item => {
           return {
-            
+            id : item.payload.doc.id,
             ...item.payload.doc.data()} as Bookingform
         })
       })
