@@ -3,10 +3,13 @@ import { NgModule } from '@angular/core';
 import {AngularFireModule} from '@angular/fire';
 import {firebaseConfig} from '../environments/firebase.config';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { RouterModule, Routes} from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //pages
@@ -22,6 +25,8 @@ import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 //services
 import { AuthguardService } from './core/services/authguard.service';
+import { BookingformService } from './core/services/bookingform.service';
+import { RegisterpageComponent } from './modules/pages/registerpage/registerpage.component';
 
 
 const appRoutes: Routes = [
@@ -29,6 +34,9 @@ const appRoutes: Routes = [
     { path : 'login', component : LoginpageComponent },
     { path : 'home', component : HomeComponent },
     { path : 'booking-overview', component : BookingoverviewComponent },
+    { path: 'register', component : RegisterpageComponent },
+    { path : 'booking-overview', component : BookingoverviewComponent },
+    { path : '', redirectTo: '/login', pathMatch: 'full' }
     { path : 'qrscanner', component : QRscannerComponent }
   ];
 
@@ -42,6 +50,7 @@ const appRoutes: Routes = [
     BookingformComponent,
     HeaderComponent,
     FooterComponent,
+    RegisterpageComponent
     QRscannerComponent
   ],
   imports: [
@@ -53,11 +62,16 @@ const appRoutes: Routes = [
     AppRoutingModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireAuthModule,
+    AngularFirestoreModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
-    AuthguardService
+    AuthguardService,
+    BookingformService
   ],
   bootstrap: [AppComponent]
 })
