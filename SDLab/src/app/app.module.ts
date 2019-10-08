@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import {AngularFireModule} from '@angular/fire';
 import {firebaseConfig} from '../environments/firebase.config';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { RouterModule, Routes} from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //pages
@@ -21,6 +22,7 @@ import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 //services
 import { AuthguardService } from './core/services/authguard.service';
+import { BookingformService } from './core/services/bookingform.service';
 
 const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
@@ -49,11 +51,14 @@ const appRoutes: Routes = [
     AppRoutingModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireAuthModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
-    AuthguardService
+    AuthguardService,
+    BookingformService
   ],
   bootstrap: [AppComponent]
 })
