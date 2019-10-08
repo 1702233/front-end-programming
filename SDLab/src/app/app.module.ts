@@ -4,6 +4,8 @@ import {AngularFireModule} from '@angular/fire';
 import {firebaseConfig} from '../environments/firebase.config';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { RouterModule, Routes} from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
     { path : 'login', component : LoginpageComponent },
     { path : 'home', component : HomeComponent },
-    { path : 'booking-overview', component : BookingoverviewComponent }
+    { path : 'booking-overview', component : BookingoverviewComponent },
+    { path : '', redirectTo: '/login', pathMatch: 'full' }
   ];
 
 @NgModule({
@@ -40,7 +43,8 @@ const appRoutes: Routes = [
     BookingoverviewComponent,
     BookingformComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    
   ],
   imports: [
     RouterModule.forRoot(
@@ -54,6 +58,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
