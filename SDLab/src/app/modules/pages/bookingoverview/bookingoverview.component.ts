@@ -10,30 +10,31 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./bookingoverview.component.css']
 })
 export class BookingoverviewComponent implements OnInit {
-  list : Bookingform[];
-  constructor(private service : BookingformService,
+  list: Bookingform[];
+  constructor(private service: BookingformService,
     private firestore: AngularFirestore,
-    private toastr:ToastrService) { }
+    private toastr: ToastrService) { }
 
   ngOnInit() {
-      this.service.getBoekingen().subscribe(actionArray =>{
-        this.list = actionArray.map(item => {
-          return {
-            
-            ...item.payload.doc.data()} as Bookingform
-        })
+    this.service.getBoekingen().subscribe(actionArray => {
+      this.list = actionArray.map(item => {
+        return {
+
+          ...item.payload.doc.data()
+        } as Bookingform
       })
+    })
   }
-  
-  onEdit(booking:Bookingform) {
-    this.service.formData =Object.assign({},booking);
+
+  onEdit(booking: Bookingform) {
+    this.service.formData = Object.assign({}, booking);
 
   }
 
-  onDelete(id:string) {
-    if(confirm("Weet je zeker dat je deze boeking wilt verwijderen?")){
-      this.firestore.doc('boekingen/'+id).delete();
-      this.toastr.warning("deleted sucessfully","Boeking")
+  onDelete(id: string) {
+    if (confirm("Weet je zeker dat je deze boeking wilt verwijderen?")) {
+      this.firestore.doc('boekingen/' + id).delete();
+      this.toastr.warning("deleted sucessfully", "Boeking")
     }
   }
 }

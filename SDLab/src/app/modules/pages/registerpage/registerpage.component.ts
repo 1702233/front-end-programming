@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-registerpage',
@@ -10,12 +12,11 @@ export class RegisterpageComponent implements OnInit {
   constructor() { }
 
   sendRegistration() {
-    let studentmail = (<HTMLInputElement> document.getElementById('studentenmail')).value;
-    let studentennummer = (<HTMLInputElement> document.getElementById('studentennummer')).value;
-    let voornaam = (<HTMLInputElement> document.getElementById('voornaam')).value;
-    let achternaam = (<HTMLInputElement> document.getElementById('achternaam')).value;
-
-    // console.log('Added: ' + studentmail + ' ' + studentennummer + ' ' + voornaam + ' ' + achternaam + ' to registrationlist');
+    let studentmail = (document.getElementById('studentenmail') as HTMLInputElement).value;
+    let studentennummer = (document.getElementById('studentennummer') as HTMLInputElement).value;
+    let voornaam = (document.getElementById('voornaam') as HTMLInputElement).value;
+    let achternaam = (document.getElementById('achternaam') as HTMLInputElement).value;
+    console.log('Added: ' + studentmail + ' ' + studentennummer + ' ' + voornaam + ' ' + achternaam + ' to registrationlist');
 
   }
 
