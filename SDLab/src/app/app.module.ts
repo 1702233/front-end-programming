@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { LoginpageComponent } from './modules/pages/loginpage/loginpage.component';
 import { BookingoverviewComponent } from './modules/pages/bookingoverview/bookingoverview.component';
+import { QRscannerComponent } from './modules/pages/qrscanner/qrscanner.component';
 //components
 import { CalenderComponent } from './modules/components/calender/calender.component';
 import { BookingformComponent } from './modules/components/bookingform/bookingform.component';
@@ -22,11 +23,13 @@ import { FooterComponent } from './core/footer/footer.component';
 //services
 import { AuthguardService } from './core/services/authguard.service';
 
+
 const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
     { path : 'login', component : LoginpageComponent },
     { path : 'home', component : HomeComponent },
-    { path : 'booking-overview', component : BookingoverviewComponent }
+    { path : 'booking-overview', component : BookingoverviewComponent },
+    { path : 'qrscanner', component : QRscannerComponent }
   ];
 
 @NgModule({
@@ -38,7 +41,8 @@ const appRoutes: Routes = [
     BookingoverviewComponent,
     BookingformComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    QRscannerComponent
   ],
   imports: [
     RouterModule.forRoot(
