@@ -23,12 +23,14 @@ import { FooterComponent } from './core/footer/footer.component';
 //services
 import { AuthguardService } from './core/services/authguard.service';
 import { BookingformService } from './core/services/bookingform.service';
+import { RegisterpageComponent } from './modules/pages/registerpage/registerpage.component';
 
 const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
     { path : 'login', component : LoginpageComponent },
     { path : 'home', component : HomeComponent },
-    { path : 'booking-overview', component : BookingoverviewComponent }
+    { path : 'booking-overview', component : BookingoverviewComponent },
+    { path: 'register', component : RegisterpageComponent }
   ];
 
 @NgModule({
@@ -40,7 +42,8 @@ const appRoutes: Routes = [
     BookingoverviewComponent,
     BookingformComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterpageComponent
   ],
   imports: [
     RouterModule.forRoot(
