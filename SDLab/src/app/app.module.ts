@@ -30,7 +30,8 @@ const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
     { path : 'login', component : LoginpageComponent },
     { path : 'home', component : HomeComponent },
-    { path : 'booking-overview', component : BookingoverviewComponent }
+    { path : 'booking-overview', component : BookingoverviewComponent },
+    { path : '', redirectTo: '/login', pathMatch: 'full' }
   ];
 
 @NgModule({
