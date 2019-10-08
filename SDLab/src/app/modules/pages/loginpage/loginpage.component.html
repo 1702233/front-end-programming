@@ -1,4 +1,4 @@
 <p>loginpage works!</p>
 <button (click)="googleLogin()">Login with google</button>
-<div *ngIf="canActivate()"> Je bent ingelogd als: {{firebaseAuth}} </div>
+<div *ngIf="canActivate()"> Je bent ingelogd als: {{onSignIn(firebaseAuth)}}{{user.email}} </div>
 <button *ngIf="canActivate()" (click)="logout()"> Logout with google</button>
