@@ -9,8 +9,12 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./loginpage.component.css']
 })
 export class LoginpageComponent implements OnInit {
+  
 
-  constructor(private firebaseAuth: AngularFireAuth, private Authguard: AuthguardService) { }
+  constructor(private firebaseAuth: AngularFireAuth, private Authguard: AuthguardService) { 
+  }
+  user = firebase.auth().currentUser;
+
 
   googleLogin() {
     return this.firebaseAuth.auth.signInWithPopup(
@@ -24,6 +28,14 @@ export class LoginpageComponent implements OnInit {
 
   canActivate() {
     return this.Authguard.canActivate();
+  }
+
+  onSignIn(firebaseAuth) {
+    this.user = firebase.auth().currentUser;
+    console.log('ID: ' + this.user.displayName); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + this.user.displayName);
+    console.log('Image URL: ' + this.user.displayName);
+    console.log('Email: ' + this.user.email); // This is null if the 'email' scope is not present.
   }
 
   ngOnInit() {
