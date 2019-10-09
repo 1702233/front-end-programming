@@ -17,7 +17,6 @@ import { HomeComponent } from './modules/pages/home/home.component';
 import { LoginpageComponent } from './modules/pages/loginpage/loginpage.component';
 import { BookingoverviewComponent } from './modules/pages/bookingoverview/bookingoverview.component';
 // components
-//components
 import { CalenderComponent } from './modules/components/calender/calender.component';
 import { BookingformComponent } from './modules/components/bookingform/bookingform.component';
 import { RegisterpageComponent } from './modules/pages/registerpage/registerpage.component';
@@ -37,7 +36,6 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterpageComponent },
   { path: 'booking-overview', component: BookingoverviewComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
-    { path : '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -51,7 +49,6 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     RegisterpageComponent
-    BookingacceptanceComponent
   ],
   imports: [
     RouterModule.forRoot(
