@@ -1,42 +1,43 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire';
-import { firebaseConfig } from '../environments/firebase.config';
+import {AngularFireModule} from '@angular/fire';
+import {firebaseConfig} from '../environments/firebase.config';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// pages
+//pages
 import { HomeComponent } from './modules/pages/home/home.component';
 import { LoginpageComponent } from './modules/pages/loginpage/loginpage.component';
 import { BookingoverviewComponent } from './modules/pages/bookingoverview/bookingoverview.component';
-// components
+import { BookingacceptanceComponent } from './modules/pages/bookingacceptance/bookingacceptance.component';
+//components
 import { CalenderComponent } from './modules/components/calender/calender.component';
 import { BookingformComponent } from './modules/components/bookingform/bookingform.component';
-import { RegisterpageComponent } from './modules/pages/registerpage/registerpage.component';
-// core
+//core
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
-// services
+//services
 import { AuthguardService } from './core/services/authguard.service';
 import { BookingformService } from './core/services/bookingform.service';
-import { RegisterService } from './core/services/register.service';
+import { RegisterpageComponent } from './modules/pages/registerpage/registerpage.component';
 
 const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
-  { path: 'login', component: LoginpageComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'booking-overview', component: BookingoverviewComponent },
-  { path: 'register', component: RegisterpageComponent },
-  { path: 'booking-overview', component: BookingoverviewComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
-];
+    { path : 'login', component : LoginpageComponent },
+    { path : 'home', component : HomeComponent },
+    { path : 'booking-overview', component : BookingoverviewComponent },
+    { path: 'register', component : RegisterpageComponent },
+    { path : 'booking-overview', component : BookingoverviewComponent },
+    { path : 'booking-acceptance', component : BookingacceptanceComponent },
+    { path : '', redirectTo: '/login', pathMatch: 'full' }
+  ];
 
 @NgModule({
   declarations: [
@@ -48,12 +49,13 @@ const appRoutes: Routes = [
     BookingformComponent,
     HeaderComponent,
     FooterComponent,
-    RegisterpageComponent
+    RegisterpageComponent,
+    BookingacceptanceComponent
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true }
+      { enableTracing: true}
     ),
     BrowserModule,
     AppRoutingModule,
@@ -68,8 +70,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthguardService,
-    BookingformService,
-    RegisterService
+    BookingformService
   ],
   bootstrap: [AppComponent]
 })

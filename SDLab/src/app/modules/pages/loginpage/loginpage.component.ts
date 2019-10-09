@@ -30,6 +30,11 @@ export class LoginpageComponent implements OnInit {
     return this.Authguard.canActivate();
   }
 
+  canActivateAdmin() {
+    return this.Authguard.canActivateAdmin();
+  }
+
+
   onSignIn(firebaseAuth) {
     this.user = firebase.auth().currentUser;
     console.log('ID: ' + this.user.displayName); // Do not send to your backend! Use an ID token instead.

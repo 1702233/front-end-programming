@@ -27,4 +27,8 @@ export class AuthguardService implements CanActivate {
   canActivate() {
     return this.authState !== null;;
   }
+
+  canActivateAdmin() {
+    return (this.authState !== null) && (this.authState.email == 'gideon.bruijn@gmail.com');
+  }
 }
