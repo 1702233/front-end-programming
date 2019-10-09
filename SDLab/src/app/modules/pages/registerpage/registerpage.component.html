@@ -1,32 +1,7 @@
-<h1>Registeren voor het SD-Lab</h1>
-<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
-    <div class="form-group">
-        <input name="studentenmail" #studentenmail="ngModel" [(ngModel)]="service.formData.studentenmail"
-            class="form-control" placeholder="Studentenmail" required>
-        <div *ngIf="studentenmail.invalid && studentenmail.touched" class="validation-error">Dit veld is verplicht!
-        </div>
-    </div>
-    <div class="form-group">
-        <input name="studentennummer" #studentennummer="ngModel" [(ngModel)]="service.formData.studentennummer"
-            class="form-control" placeholder="Studentennummer" required>
-            <div *ngIf="studentennummer.invalid && studentennummer.touched" class="validation-error">Dit veld is verplicht!
-            </div>
-    </div>
-    <div class="form-group">
-        <input name="voornaam" #voornaam="ngModel" [(ngModel)]="service.formData.voornaam" class="form-control"
-            placeholder="Voornaam" required>
-            <div *ngIf="voornaam.invalid && voornaam.touched" class="validation-error">Dit veld is verplicht!
-            </div>
-    </div>
-    <div class="form-group">
-        <input name="achternaam" #achternaam="ngModel" [(ngModel)]="service.formData.achternaam" class="form-control"
-            placeholder="Achternaam" required>
-            <div *ngIf="achternaam.invalid && achternaam.touched" class="validation-error">Dit veld is verplicht!
-            </div>
-    </div>
-    <div class="form-group">
-        <button type="submit" [disabled]="form.invalid"
-            class="submit btn btn-lg btn-block btn-info">Registreren</button>
-    </div>
-</form>
+<div>
+    <input type="email" placeholder="Studentenmail" id="studentenmail">
+    <input type="number" max="6" placeholder="Studentennummer" id="studentennummer">
+    <input type="text" placeholder="Voornaam" id="voornaam">
+    <input type="text" placeholder="Achternaam" id="achternaam">
+    <button (click)="sendRegistration()">Register!</button>
+</div>
