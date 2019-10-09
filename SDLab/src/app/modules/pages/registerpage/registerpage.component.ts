@@ -25,10 +25,10 @@ export class RegisterpageComponent implements OnInit {
 
     this.service.formData = {
       id: null,
-      studentenmail: ' ',
+      studentenmail: '',
       studentennummer: null,
-      voornaam: ' ',
-      achternaam: ' ',
+      voornaam: '',
+      achternaam: '',
     };
   }
 
