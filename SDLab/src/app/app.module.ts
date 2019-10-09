@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { LoginpageComponent } from './modules/pages/loginpage/loginpage.component';
 import { BookingoverviewComponent } from './modules/pages/bookingoverview/bookingoverview.component';
+import { BookingacceptanceComponent } from './modules/pages/bookingacceptance/bookingacceptance.component';
 //components
 import { CalenderComponent } from './modules/components/calender/calender.component';
 import { BookingformComponent } from './modules/components/bookingform/bookingform.component';
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     { path : 'booking-overview', component : BookingoverviewComponent },
     { path: 'register', component : RegisterpageComponent },
     { path : 'booking-overview', component : BookingoverviewComponent },
+    { path : 'booking-acceptance', component : BookingacceptanceComponent },
     { path : '', redirectTo: '/login', pathMatch: 'full' }
   ];
 
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     BookingformComponent,
     HeaderComponent,
     FooterComponent,
-    RegisterpageComponent
+    RegisterpageComponent,
+    BookingacceptanceComponent
   ],
   imports: [
     RouterModule.forRoot(
