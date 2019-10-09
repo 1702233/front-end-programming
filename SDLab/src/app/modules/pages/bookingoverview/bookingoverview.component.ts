@@ -16,12 +16,12 @@ export class BookingoverviewComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.service.getBoekingen().subscribe(actionArray => {
-      this.list = actionArray.map(item => {
-        return {
-
-          ...item.payload.doc.data()
-        } as Bookingform
+      this.service.getBoekingen().subscribe(actionArray =>{
+        this.list = actionArray.map(item => {
+          return {
+            id : item.payload.doc.id,
+            ...item.payload.doc.data()} as Bookingform
+        })
       })
     })
   }
