@@ -23,8 +23,7 @@ export class BookingoverviewComponent implements OnInit {
             ...item.payload.doc.data()} as Bookingform
         })
       })
-    })
-  }
+    }
 
   onEdit(booking: Bookingform) {
     this.service.formData = Object.assign({}, booking);
