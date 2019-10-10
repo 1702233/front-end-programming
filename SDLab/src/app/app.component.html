@@ -1,11 +1,13 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
   <div class="nav-item">SD-Lab</div>
-  <div class="nav-item"><a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a></div>
   <div *ngIf="canActivate()" class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a></div>
-  <div *ngIf="canActivate()" class="nav-item"><a class="nav-link" routerLink="/booking-overview" routerLinkActive="active">Booking overview</a></div>
-  <div class="nav-item"><a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a></div>
+  <div *ngIf="canActivate()" class="nav-item"><a class="nav-link" routerLink="/booking-overview" routerLinkActive="active">Boekingsoverzicht</a></div>
   <div *ngIf="canActivateAdmin()" class="nav-item"><a class="nav-link" routerLink="/register-acceptance" routerLinkActive="active">Registratie beoordelen</a></div>
-  <div *ngIf="canActivateAdmin()" class="nav-item"><a class="nav-link" routerLink="/booking-acceptance" routerLinkActive="active">Booking acceptance</a></div>
+  <div *ngIf="canActivateAdmin()" class="nav-item"><a class="nav-link" routerLink="/booking-acceptance" routerLinkActive="active">Boeking beoordelen</a></div>
+  <div class="nav-item"><a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a></div>
+  <div class="nav-item"><a class="nav-link" routerLink="/register" routerLinkActive="active">Registreren</a></div>
+
+
 
   
 </nav>
