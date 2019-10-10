@@ -8,26 +8,30 @@
         </div>
     </div>
     <div class="form-group">
-        <input type="number" name="studentennummer" #studentennummer="ngModel" [(ngModel)]="service.formData.studentennummer"
-            class="form-control" placeholder="Studentennummer" required>
-            <div *ngIf="studentennummer.invalid && studentennummer.touched" class="validation-error">Dit veld is verplicht!
-            </div>
+        <input type="number" name="studentennummer" #studentennummer="ngModel"
+            [(ngModel)]="service.formData.studentennummer" class="form-control" placeholder="Studentennummer" required>
+        <div *ngIf="studentennummer.invalid && studentennummer.touched" class="validation-error">Dit veld is verplicht!
+        </div>
     </div>
     <div class="form-group">
         <input name="voornaam" #voornaam="ngModel" [(ngModel)]="service.formData.voornaam" class="form-control"
             placeholder="Voornaam" required>
-            <div *ngIf="voornaam.invalid && voornaam.touched" class="validation-error">Dit veld is verplicht!
-            </div>
+        <div *ngIf="voornaam.invalid && voornaam.touched" class="validation-error">Dit veld is verplicht!
+        </div>
     </div>
     <div class="form-group">
         <input name="achternaam" #achternaam="ngModel" [(ngModel)]="service.formData.achternaam" class="form-control"
             placeholder="Achternaam" required>
-            <div *ngIf="achternaam.invalid && achternaam.touched" class="validation-error">Dit veld is verplicht!
-            </div>
+        <div *ngIf="achternaam.invalid && achternaam.touched" class="validation-error">Dit veld is verplicht!
+        </div>
     </div>
     <div class="form-group">
         <input hidden name="status" #status="ngModel" [(ngModel)]="service.formData.status" class="form-control"
-            placeholder="status" value="ingediend">
+            placeholder="status">
+    </div>
+    <div class="form-group">
+        <input hidden name="gmail" #status="ngModel" [(ngModel)]="service.formData.gmail" class="form-control"
+            placeholder="gmail">
     </div>
     <div class="form-group">
         <button type="submit" [disabled]="form.invalid"

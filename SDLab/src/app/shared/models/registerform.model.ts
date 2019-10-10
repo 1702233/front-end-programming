@@ -5,5 +5,6 @@ export class Registerform {
     voornaam: string;
     achternaam: string;
     status: string;
+    gmail: string;
 
 }
