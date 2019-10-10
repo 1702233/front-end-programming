@@ -41,8 +41,8 @@ const appRoutes: Routes = [
   { path: 'booking-acceptance', component: BookingacceptanceComponent, canActivate: [AuthGuard] },
   { path: 'register-acceptance', component: RegisteracceptanceComponent},
   { path: 'booking-acceptance', component: BookingacceptanceComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path : 'qrscanner', component : QRscannerComponent }
+  { path : 'qrscanner', component : QRscannerComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
   ];
 
 @NgModule({
@@ -57,7 +57,7 @@ const appRoutes: Routes = [
     FooterComponent,
     RegisterpageComponent,
     QRscannerComponent,
-    RegisteracceptanceComponent
+    RegisteracceptanceComponent,
   ],
   imports: [
     RouterModule.forRoot(
