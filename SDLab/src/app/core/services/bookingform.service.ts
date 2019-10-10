@@ -6,7 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class BookingformService {
-  formData : Bookingform;
+  formData: Bookingform;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -15,14 +15,15 @@ export class BookingformService {
   }
 
   getIngediendeBoekingen() {
-    return this.firestore.collection('boekingen', ref => ref.where('status', '==', "ingediend")).snapshotChanges();
+    return this.firestore.collection('boekingen', ref => ref.where('status', '==', 'ingediend')).snapshotChanges();
   }
 
   getGoedgekeurdeBoekingen() {
-    return this.firestore.collection('boekingen', ref => ref.where('status', '==', "goedgekeurd")).snapshotChanges();
+    return this.firestore.collection('boekingen', ref => ref.where('status', '==', 'goedgekeurd')).snapshotChanges();
   }
 
-  getBoeking(id:string) {
-    return this.firestore.collection('boekingen/'+id).snapshotChanges();
+
+  getBoeking(id: string) {
+    return this.firestore.collection('boekingen/' + id).snapshotChanges();
   }
 }
