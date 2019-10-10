@@ -13,4 +13,16 @@ export class BookingformService {
   getBoekingen() {
     return this.firestore.collection('boekingen').snapshotChanges();
   }
+
+  getIngediendeBoekingen() {
+    return this.firestore.collection('boekingen', ref => ref.where('status', '==', "ingediend")).snapshotChanges();
+  }
+
+  getGoedgekeurdeBoekingen() {
+    return this.firestore.collection('boekingen', ref => ref.where('status', '==', "goedgekeurd")).snapshotChanges();
+  }
+
+  getBoeking(id:string) {
+    return this.firestore.collection('boekingen/'+id).snapshotChanges();
+  }
 }
