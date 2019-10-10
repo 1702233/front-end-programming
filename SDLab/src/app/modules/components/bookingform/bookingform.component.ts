@@ -29,8 +29,8 @@ export class BookingformComponent implements OnInit {
     this.service.formData = {
       id: null,
       name: '',
-      begintime: '2018-10-20T16:30',
-      endtime: '2018-10-20T18:30',
+      begintime: '2019-10-20T16:30',
+      endtime: '2019-10-20T18:30',
       opmerking: '',
       googlemail: this.user.currentUser.email,
       schoolmail: 'schoolmail@student.hu.nl',

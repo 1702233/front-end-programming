@@ -1,4 +1,4 @@
-<h2>Boek het SDLab</h2>
+<h2>Boek het SD-Lab</h2>
 
 <div>
     <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
@@ -30,7 +30,7 @@
         <!-- todo: add mails so they are added to database when inserted. -->
         
         <div class="form-group">
-            <label>Schoolmail</label>
+            <!-- <label>Schoolmail</label> -->
             <input hidden name="schoolmail" id="schoolmail" #schoolmail="ngModel" [(ngModel)]="service.formData.schoolmail" class="form-control" placeholder="schoolmail@student.hu.nl" readonly>
             <div *ngIf="schoolmail.invalid && schoolmail.touched" class="validation-error">Dit veld is verplicht!</div>
         </div>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="form-group">
-            <label>Status</label>
+            <!-- <label>Status</label> -->
             <input hidden name="status" id="status" #status="ngModel" [(ngModel)]="service.formData.status" class="form-control" readonly>
         </div>
 
