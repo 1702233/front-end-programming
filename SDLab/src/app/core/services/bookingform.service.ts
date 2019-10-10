@@ -22,6 +22,10 @@ export class BookingformService {
     return this.firestore.collection('boekingen', ref => ref.where('status', '==', 'goedgekeurd')).snapshotChanges();
   }
 
+  setFilter(filter) {
+    return this.firestore.collection('boekingen', ref => ref.where('status', '==', filter)).snapshotChanges();
+  }
+
 
   getBoeking(id: string) {
     return this.firestore.collection('boekingen/' + id).snapshotChanges();

@@ -1,11 +1,11 @@
 <h1>Boekingsoverzicht</h1>
 
-<select id="boekingdropdown" (change)="changeView()">
-    <option id="alles">---</option>
-    <option id="goedgekeurd">Goedgekeurde boekingen</option>
-    <option id="ingediend">Ingediende boekingen</option>
-    <option id="afgekeurd">Afgekeurde boekingen</option>
-    <option id="geannuleerd">Geannuleerde boekingen</option>
+<select id="boekingdropdown" (change)="changeView($event)">
+    <option value="all">Alle boekingen</option>
+    <option value="goedgekeurd" id="goedgekeurd">Goedgekeurde boekingen</option>
+    <option value="ingediend" id="ingediend">Ingediende boekingen</option>
+    <option value="afgekeurd" id="afgekeurd">Afgekeurde boekingen</option>
+    <option value="geannuleerd" id="geannuleerd">Geannuleerde boekingen</option>
 </select>
 
 <table class="table table-hover">
