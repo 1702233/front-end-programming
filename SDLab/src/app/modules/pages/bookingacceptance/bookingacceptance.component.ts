@@ -13,7 +13,8 @@ import { NgForm } from '@angular/forms';
 })
 export class BookingacceptanceComponent implements OnInit {
   list: Bookingform[];
-  updated: Bookingform[];
+  
+  
   constructor(private Authguard: AuthguardService,
     private service: BookingformService,
     private firestore: AngularFirestore,
@@ -36,7 +37,7 @@ export class BookingacceptanceComponent implements OnInit {
         "status": "goedgekeurd",
       });
       this.toastr.success("Success", "Boeking goedgekeurd");
-      this.firestore.collection("boekingen").doc(id).update({ "qrcode": this.qrcodeStringGenerator(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') })
+      this.firestore.collection("boekingen").doc(id).update({ "qrcode": this.qrcodeStringGenerator(7) })
     }
     // TODO update google calendar.
 
@@ -52,7 +53,8 @@ export class BookingacceptanceComponent implements OnInit {
 
   }
 
-  qrcodeStringGenerator(length, chars) {
+  qrcodeStringGenerator(length) {
+    var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     var result = '';
     for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
     return result;

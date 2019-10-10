@@ -22,6 +22,14 @@ export class BookingformService {
     return this.firestore.collection('boekingen', ref => ref.where('status', '==', 'goedgekeurd')).snapshotChanges();
   }
 
+  getBoekingByGmail(gmail: string) {
+    //als je beheerder bent krijg je alle boekingen 
+    if (gmail == 'gideon.bruijn@gmail.com') {
+      return this.firestore.collection('boekingen').snapshotChanges();
+    } else {
+      return this.firestore.collection('boekingen', ref => ref.where('googlemail', '==', gmail)).snapshotChanges();
+    }
+  }
 
   getBoeking(id: string) {
     return this.firestore.collection('boekingen/' + id).snapshotChanges();

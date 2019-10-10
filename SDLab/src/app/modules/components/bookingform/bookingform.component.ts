@@ -3,7 +3,7 @@ import { FormBuilder, NgForm } from '@angular/forms';
 import { BookingformService } from 'src/app/core/services/bookingform.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-bookingform',
@@ -12,6 +12,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 })
 export class BookingformComponent implements OnInit {
 
+  user = firebase.auth();
   constructor(
     private firestore: AngularFirestore,
     private service: BookingformService,
@@ -27,11 +28,11 @@ export class BookingformComponent implements OnInit {
     // default values voor bookingform
     this.service.formData = {
       id: null,
-      name: 'default Piet',
+      name: '',
       begintime: '2018-10-20T16:30',
       endtime: '2018-10-20T18:30',
-      opmerking: 'default opmerking',
-      googlemail: 'gmail@gmail.com',
+      opmerking: '',
+      googlemail: this.user.currentUser.email,
       schoolmail: 'schoolmail@student.hu.nl',
       status: 'ingediend',
     };
@@ -45,7 +46,7 @@ export class BookingformComponent implements OnInit {
     } else {
       this.firestore.doc('boekingen/' + form.value.id).update(data);
     }
-    this.resetForm(form);
+    this.resetForm();
     this.toastr.success('submitted succesfully', 'Boeking gedaan.');
   }
 

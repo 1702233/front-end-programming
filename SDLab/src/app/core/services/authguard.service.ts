@@ -15,6 +15,7 @@ import { switchMap } from 'rxjs/operators';
 export class AuthguardService implements CanActivate {
 
   authState: firebase.User;
+  user = firebase.auth();
   user$: Observable<User>;
 
   constructor(private firebaseAuth: AngularFireAuth,
@@ -75,6 +76,7 @@ export class AuthguardService implements CanActivate {
   }
 
   canActivateAdmin() {
-    return (this.authState !== null) && (this.authState.email == 'gideon.bruijn@gmail.com');
+    this.user.updateCurrentUser;
+    return (this.authState !== null) && (this.user.currentUser.email == 'gideon.bruijn@gmail.com');
   }
 }

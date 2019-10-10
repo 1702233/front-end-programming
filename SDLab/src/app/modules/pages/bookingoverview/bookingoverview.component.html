@@ -10,24 +10,23 @@
 
 <table class="table table-hover">
     <thead>
+        <th>schoolmail</th>
         <th>naam</th>
         <th>begintijd</th>
         <th>eindtijd</th>
-        <th>gmail</th>
-        <th>schoolmail</th>
-        <th>opmerking</th>
+        <th>status</th>
+        <th>QRCODE</th>
         <th></th>
     </thead>
     <tbody>
         <tr *ngFor="let booking of list">
+            <td>{{booking.schoolmail}}</td>
             <td>{{booking.name}}</td>
             <td>{{booking.begintime}}</td>
             <td>{{booking.endtime}}</td>
-            <td>{{booking.googlemail}}</td>
-            <td>{{booking.schoolmail}}</td>
-            <td>{{booking.opmerking}}</td>
-            <td><a class="btn text-danger" (click)="onDelete(booking.id)"><i class="fa fa-trash"
-                        aria-hidden="true"></i></a></td>
+            <td>{{booking.status}}</td>
+            <td>{{booking.qrcode}}</td>
+            <td><a  class="btn text-danger" (click)="onDelete(booking.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
         </tr>
     </tbody>
 </table>
