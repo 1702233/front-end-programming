@@ -13,4 +13,8 @@ export class BookingformService {
   getBoekingen() {
     return this.firestore.collection('boekingen').snapshotChanges();
   }
+
+  getBoeking(id:string) {
+    return this.firestore.collection('boekingen/'+id).snapshotChanges();
+  }
 }
