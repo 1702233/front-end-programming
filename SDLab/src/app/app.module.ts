@@ -27,6 +27,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AuthguardService } from './core/services/authguard.service';
 import { BookingformService } from './core/services/bookingform.service';
 import { RegisterService } from './core/services/register.service';
+import { BookingacceptanceComponent } from './modules/pages/bookingacceptance/bookingacceptance.component';
 
 const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
@@ -34,7 +35,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'booking-overview', component: BookingoverviewComponent },
   { path: 'register', component: RegisterpageComponent },
-  { path: 'booking-overview', component: BookingoverviewComponent },
+  { path: 'booking-acceptance', component: BookingacceptanceComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     CalenderComponent,
     LoginpageComponent,
     BookingoverviewComponent,
+    BookingacceptanceComponent,
     BookingformComponent,
     HeaderComponent,
     FooterComponent,
