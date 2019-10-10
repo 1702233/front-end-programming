@@ -29,19 +29,21 @@ export class RegisterpageComponent implements OnInit {
       studentennummer: null,
       voornaam: '',
       achternaam: '',
+      status: 'Ingediend',
     };
   }
 
   onSubmit(form: NgForm) {
-    let data = Object.assign({}, form.value);
+    const data = Object.assign({}, form.value);
     delete data.id;
     if (form.value.id == null) {
+      console.log(data);
       this.firestore.collection('registraties').add(data);
     } else {
       this.firestore.doc('registraties/' + form.value.id).update(data);
     }
     this.resetForm(form);
-    this.toastr.success('submitted succesfully', 'Registratie gedaan.');
+    this.toastr.success('submitted succesfully', 'Succesvol geregistreerd.');
   }
 
   ngOnInit() {

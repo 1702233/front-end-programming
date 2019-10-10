@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="form-group">
-        <input name="studentennummer" #studentennummer="ngModel" [(ngModel)]="service.formData.studentennummer"
+        <input type="number" name="studentennummer" #studentennummer="ngModel" [(ngModel)]="service.formData.studentennummer"
             class="form-control" placeholder="Studentennummer" required>
             <div *ngIf="studentennummer.invalid && studentennummer.touched" class="validation-error">Dit veld is verplicht!
             </div>
@@ -24,6 +24,10 @@
             placeholder="Achternaam" required>
             <div *ngIf="achternaam.invalid && achternaam.touched" class="validation-error">Dit veld is verplicht!
             </div>
+    </div>
+    <div class="form-group">
+        <input hidden name="status" #status="ngModel" [(ngModel)]="service.formData.status" class="form-control"
+            placeholder="status" value="ingediend">
     </div>
     <div class="form-group">
         <button type="submit" [disabled]="form.invalid"
