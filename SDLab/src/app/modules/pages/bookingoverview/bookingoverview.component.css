@@ -1,0 +1,14 @@
+#qrcode {
+    margin-left: 25px;
+    margin-bottom: 25px;
+}
+
+#hideButton {
+    margin-top: 25px;
+}
+
+#qrcodedata {
+    color: #0645AD;
+    text-decoration: underline;
+    cursor: pointer;
+}

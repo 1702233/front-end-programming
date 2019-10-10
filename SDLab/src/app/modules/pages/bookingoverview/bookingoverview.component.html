@@ -1,5 +1,8 @@
 <h1>Boekingsoverzicht</h1>
-<qrcode [qrdata]="qrcode" [size]="256" [level]="'M'"></qrcode>
+<div id="qrcode" [style.display]="hiddenDiv">
+    <qrcode [qrdata]="qrcode" [size]="256" [level]="'M'"></qrcode>
+    <button id="hideButton" (click)="HideQRCode()">Verberg QRcode</button>
+</div>
 <select id="boekingdropdown" (change)="changeView($event)">
     <option value="all">Alle boekingen</option>
     <option value="goedgekeurd" id="goedgekeurd">Goedgekeurde boekingen</option>
@@ -25,7 +28,7 @@
             <td>{{booking.begintime}}</td>
             <td>{{booking.endtime}}</td>
             <td>{{booking.status}}</td>
-            <td (click)="createQRCode(booking.qrcode)">{{booking.qrcode}}</td>
+            <td id="qrcodedata" (click)="createQRCode(booking.qrcode)">{{booking.qrcode}}</td>
             <td><a class="btn text-danger" (click)="onDelete(booking.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
         </tr>
     </tbody>

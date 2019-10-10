@@ -13,7 +13,8 @@ import * as firebase from 'firebase/app';
 export class BookingoverviewComponent implements OnInit {
   list: Bookingform[];
   user = firebase.auth();
-  public qrcode = '';
+  public qrcode: string = null;
+  public hiddenDiv = 'none';
 
   constructor(private service: BookingformService,
               private firestore: AngularFirestore,
@@ -67,8 +68,14 @@ export class BookingoverviewComponent implements OnInit {
     }
   }
 
-  createQRCode(value) {
-    this.qrcode = value;
+  createQRCode(newValue: string): void {
+    this.hiddenDiv = 'block';
+    this.qrcode = newValue;
+    console.log(this.qrcode);
+  }
+
+  HideQRCode() {
+    this.hiddenDiv = 'none';
   }
 
 }
