@@ -4,7 +4,6 @@ import { Bookingform } from 'src/app/shared/models/bookingform.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import * as firebase from 'firebase/app';
-import * as generator from 'qrcode-generator';
 
 @Component({
   selector: 'app-bookingoverview',
@@ -14,11 +13,10 @@ import * as generator from 'qrcode-generator';
 export class BookingoverviewComponent implements OnInit {
   list: Bookingform[];
   user = firebase.auth();
-  public qrtag = '';
 
   constructor(private service: BookingformService,
-    private firestore: AngularFirestore,
-    private toastr: ToastrService) { }
+              private firestore: AngularFirestore,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.service.getBoekingByGmail(this.user.currentUser.email).subscribe(actionArray => {
@@ -26,10 +24,9 @@ export class BookingoverviewComponent implements OnInit {
         return {
           id: item.payload.doc.id,
           ...item.payload.doc.data()
-        } as Bookingform
-      })
-    })
-    this.createQRCode('hallo');
+        } as Bookingform;
+      });
+    });
   }
 
   onEdit(booking: Bookingform) {
@@ -70,10 +67,4 @@ export class BookingoverviewComponent implements OnInit {
 
   }
 
-  createQRCode(value) {
-    const qr = qrcode(0, 'L');
-    qr.addData(value);
-    qr.make();
-    this.qrtag = qr.createImgTag();
-  }
 }
