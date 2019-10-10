@@ -13,4 +13,8 @@ export class RegisterService {
   getRegistrations() {
     return this.firestore.collection('registraties').snapshotChanges();
   }
+
+  getRegistration(id: string) {
+    return this.firestore.collection('registraties/' + id).snapshotChanges();
+  }
 }

@@ -28,6 +28,7 @@ import { AuthguardService } from './core/services/authguard.service';
 import { BookingformService } from './core/services/bookingform.service';
 import { RegisterService } from './core/services/register.service';
 import { BookingacceptanceComponent } from './modules/pages/bookingacceptance/bookingacceptance.component';
+import { RegisteracceptanceComponent } from './modules/pages/registeracceptance/registeracceptance.component';
 
 const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'booking-overview', component: BookingoverviewComponent },
   { path: 'register', component: RegisterpageComponent },
+  { path: 'register-acceptance', component: RegisteracceptanceComponent},
   { path: 'booking-acceptance', component: BookingacceptanceComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
@@ -50,7 +52,8 @@ const appRoutes: Routes = [
     BookingformComponent,
     HeaderComponent,
     FooterComponent,
-    RegisterpageComponent
+    RegisterpageComponent,
+    RegisteracceptanceComponent
   ],
   imports: [
     RouterModule.forRoot(

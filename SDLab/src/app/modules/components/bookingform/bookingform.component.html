@@ -30,19 +30,19 @@
         
         <div class="form-group">
             <label>Schoolmail</label>
-            <input name="schoolmail" id="schoolmail" #schoolmail="ngModel" [(ngModel)]="service.formData.schoolmail" class="form-control" placeholder="schoolmail@student.hu.nl" readonly>
+            <input hidden name="schoolmail" id="schoolmail" #schoolmail="ngModel" [(ngModel)]="service.formData.schoolmail" class="form-control" placeholder="schoolmail@student.hu.nl" readonly>
             <div *ngIf="schoolmail.invalid && schoolmail.touched" class="validation-error">Dit veld is verplicht!</div>
         </div>
 
         <div class="form-group">
             <label>Gmail</label>
-            <input name="googlemail" id="googlemail" #googlemail="ngModel" [(ngModel)]="service.formData.googlemail" class="form-control" placeholder="gmail@gmail.com" readonly>
+            <input hidden name="googlemail" id="googlemail" #googlemail="ngModel" [(ngModel)]="service.formData.googlemail" class="form-control" placeholder="gmail@gmail.com" readonly>
             <div *ngIf="googlemail.invalid && googlemail.touched" class="validation-error">Dit veld is verplicht!</div>
         </div>
 
         <div class="form-group">
             <label>Status</label>
-            <input name="status" id="status" #status="ngModel" [(ngModel)]="service.formData.status" class="form-control" readonly>
+            <input hidden name="status" id="status" #status="ngModel" [(ngModel)]="service.formData.status" class="form-control" readonly>
             <div *ngIf="status.invalid && status.touched" class="validation-error">Dit veld is verplicht!</div>
         </div>
 

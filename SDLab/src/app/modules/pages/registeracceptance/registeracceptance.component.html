@@ -1,0 +1,23 @@
+<h1>Registraties beoordelen</h1>
+<table class="table table-hover">
+    <thead>
+        <th>Email</th>
+        <th>Studentennummer</th>
+        <th>Voornaam</th>
+        <th>Achternaam</th>
+        <th>Goedkeuren</th>
+        <th>Afkeuren</th>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let register of list">
+            <td>{{register.studentenmail}}</td>
+            <td>{{register.studentennummer}}</td>
+            <td>{{register.voornaam}}</td>
+            <td>{{register.achternaam}}</td>
+            <td><a class="btn" (click)="onAccept(register.id)"><i class="fa fa-check" aria-hidden="true"></i></a></td>
+            <td><a class="btn" (click)="onDeny(register.id)"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+        </tr>
+    </tbody>
+</table>
