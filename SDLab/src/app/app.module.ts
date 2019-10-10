@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { LoginpageComponent } from './modules/pages/loginpage/loginpage.component';
 import { BookingoverviewComponent } from './modules/pages/bookingoverview/bookingoverview.component';
+import { QRscannerComponent } from './modules/pages/qrscanner/qrscanner.component';
 // components
 import { CalenderComponent } from './modules/components/calender/calender.component';
 import { BookingformComponent } from './modules/components/bookingform/bookingform.component';
@@ -29,6 +30,7 @@ import { BookingformService } from './core/services/bookingform.service';
 import { RegisterService } from './core/services/register.service';
 import { BookingacceptanceComponent } from './modules/pages/bookingacceptance/bookingacceptance.component';
 
+
 const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
   { path: 'login', component: LoginpageComponent },
@@ -36,8 +38,9 @@ const appRoutes: Routes = [
   { path: 'booking-overview', component: BookingoverviewComponent },
   { path: 'register', component: RegisterpageComponent },
   { path: 'booking-acceptance', component: BookingacceptanceComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
-];
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path : 'qrscanner', component : QRscannerComponent }
+  ];
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ const appRoutes: Routes = [
     BookingformComponent,
     HeaderComponent,
     FooterComponent,
-    RegisterpageComponent
+    RegisterpageComponent,
+    QRscannerComponent
   ],
   imports: [
     RouterModule.forRoot(
