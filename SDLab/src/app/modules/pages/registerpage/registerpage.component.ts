@@ -3,6 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { RegisterService } from 'src/app/core/services/register.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+import * as firebase from 'firebase/app';
+
 
 
 @Component({
@@ -18,6 +20,8 @@ export class RegisterpageComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
+  user = firebase.auth();
+
   resetForm(form?: NgForm) {
     if (form != null) {
       form.resetForm();
@@ -30,6 +34,7 @@ export class RegisterpageComponent implements OnInit {
       voornaam: '',
       achternaam: '',
       status: 'Ingediend',
+      gmail: this.user.currentUser.email,
     };
   }
 
@@ -44,10 +49,15 @@ export class RegisterpageComponent implements OnInit {
     }
     this.resetForm(form);
     this.toastr.success('submitted succesfully', 'Succesvol geregistreerd.');
+    setTimeout(this.redirect, 700);
+  }
+  redirect() {
+    window.location.replace("http://localhost:4200/login");
   }
 
   ngOnInit() {
     this.resetForm();
+    console.log(this.user.updateCurrentUser);
   }
 
 }
