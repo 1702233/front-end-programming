@@ -9,11 +9,10 @@ import { tap, map, take } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
+  authState: firebase.User;
   constructor(private auth: AuthguardService, private router: Router) {}
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+  canActivate() {
+    return this.authState !== null;;
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,

@@ -20,7 +20,7 @@ export class BookingacceptanceComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.service.getBoekingen().subscribe(actionArray => {
+    this.service.getIngediendeBoekingen().subscribe(actionArray => {
       this.list = actionArray.map(item => {
         return {
           id: item.payload.doc.id,

@@ -1,5 +1,5 @@
 <p>loginpage works!</p>
 <button id="googleLogin" (click)="googleLogin()"><i class="fa fa-google"></i>Sign in with Google</button>
-<div *ngIf="canActivate()"> Je bent ingelogd als: {{onSignIn(firebaseAuth)}}{{user.email}} </div>
+<div *ngIf="canActivate()"> Je bent ingelogd als: {{onSignIn()}}{{user.email}} </div>
 <button *ngIf="canActivate()" (click)="logout()"> Logout with google</button>
 <div *ngIf="canActivateAdmin()"> Je bent ingelogd als admin.</div>
