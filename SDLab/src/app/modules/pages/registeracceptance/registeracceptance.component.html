@@ -16,8 +16,8 @@
             <td>{{register.studentennummer}}</td>
             <td>{{register.voornaam}}</td>
             <td>{{register.achternaam}}</td>
-            <td><a class="btn" (click)="onAccept(register.id)"><i class="fa fa-check" aria-hidden="true"></i></a></td>
-            <td><a class="btn" (click)="onDeny(register.id)"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+            <td><a class="btn" (click)="acceptRegistration(register.id)"><i class="fa fa-check" aria-hidden="true"></i></a></td>
+            <td><a class="btn" (click)="denyRegistration(register.id)"><i class="fa fa-times" aria-hidden="true"></i></a></td>
         </tr>
     </tbody>
 </table>

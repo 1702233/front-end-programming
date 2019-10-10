@@ -4,6 +4,5 @@ export class Registerform {
     studentennummer: number;
     voornaam: string;
     achternaam: string;
-    status: string;
 
 }

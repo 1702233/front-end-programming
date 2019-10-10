@@ -28,8 +28,7 @@ export class RegisterpageComponent implements OnInit {
       studentenmail: '',
       studentennummer: null,
       voornaam: '',
-      achternaam: '',
-      status: 'Ingediend'
+      achternaam: ''
     };
   }
 
