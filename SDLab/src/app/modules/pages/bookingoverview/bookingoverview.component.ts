@@ -3,6 +3,7 @@ import { BookingformService } from 'src/app/core/services/bookingform.service';
 import { Bookingform } from 'src/app/shared/models/bookingform.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-bookingoverview',
@@ -11,12 +12,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BookingoverviewComponent implements OnInit {
   list : Bookingform[];
+  user = firebase.auth();
   constructor(private service : BookingformService,
     private firestore: AngularFirestore,
     private toastr:ToastrService) { }
 
   ngOnInit() {
-      this.service.getBoekingen().subscribe(actionArray =>{
+      this.service.getBoekingByGmail(this.user.currentUser.email).subscribe(actionArray =>{
         this.list = actionArray.map(item => {
           return {
             id : item.payload.doc.id,
