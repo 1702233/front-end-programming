@@ -1,5 +1,4 @@
 <h1>Boekingsoverzicht</h1>
-
 <select id="boekingdropdown" (change)="changeView($event)">
     <option value="all">Alle boekingen</option>
     <option value="goedgekeurd" id="goedgekeurd">Goedgekeurde boekingen</option>
@@ -16,7 +15,7 @@
         <th>Eindtijd</th>
         <th>Status</th>
         <th>QR-Code</th>
-        <th></th>
+        <th>Verwijderen</th>
     </thead>
     <tbody>
         <tr *ngFor="let booking of list">
@@ -26,7 +25,9 @@
             <td>{{booking.endtime}}</td>
             <td>{{booking.status}}</td>
             <td>{{booking.qrcode}}</td>
-            <td><a  class="btn text-danger" (click)="onDelete(booking.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            <td><a class="btn text-danger" (click)="onDelete(booking.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
         </tr>
     </tbody>
 </table>
+
+<div [innerHTML]="qrtag"></div>

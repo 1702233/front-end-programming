@@ -25,6 +25,7 @@
     "googleapis": "^39.2.0",
     "instascan": "^1.0.0",
     "ngx-toastr": "^11.1.0",
+    "qrcode-generator": "^1.4.4",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
