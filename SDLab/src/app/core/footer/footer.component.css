@@ -1,15 +1,15 @@
+body {
+    margin-bottom:50px;
+}
+
 #footer {
     position: fixed;
-    height: 50px;
+    height: 25px;
     background-color: white;
     bottom: 0px;
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
     text-align: center;
-    font-size: 12px;
-}
-
-body {
-    margin-bottom:50px;
+    font-size: 14px;
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, Route, UrlSegment, CanActivateChild, UrlTree, CanLoad } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router,
+  Route, UrlSegment, CanActivateChild, UrlTree, CanLoad } from '@angular/router';
 
-import { AuthguardService } from './authguard.service'
+import { AuthguardService } from './authguard.service';
 import { Observable } from 'rxjs';
 import { tap, map, take } from 'rxjs/operators';
 
@@ -10,9 +11,9 @@ import { tap, map, take } from 'rxjs/operators';
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   authState: firebase.User;
-  constructor(private auth: AuthguardService, private router: Router) {}
+  constructor(private auth: AuthguardService, private router: Router) { }
   canActivate() {
-    return this.authState !== null;;
+    return this.authState !== null;
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,

@@ -52,7 +52,7 @@ export class RegisterpageComponent implements OnInit {
     setTimeout(this.redirect, 700);
   }
   redirect() {
-    window.location.replace("/login");
+    window.location.replace('/login');
   }
 
   ngOnInit() {

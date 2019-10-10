@@ -24,7 +24,6 @@ import { CalenderComponent } from './modules/components/calender/calender.compon
 import { BookingformComponent } from './modules/components/bookingform/bookingform.component';
 import { RegisterpageComponent } from './modules/pages/registerpage/registerpage.component';
 // core
-import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 // services
 import { AuthguardService } from './core/services/authguard.service';
@@ -43,8 +42,8 @@ const appRoutes: Routes = [
   { path: 'booking-acceptance', component: BookingacceptanceComponent, canActivate: [AuthGuard] },
   { path: 'register-acceptance', component: RegisteracceptanceComponent},
   { path: 'booking-acceptance', component: BookingacceptanceComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path : 'qrscanner', component : QRscannerComponent }
+  { path : 'qrscanner', component : QRscannerComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
   ];
 
 @NgModule({
@@ -56,11 +55,10 @@ const appRoutes: Routes = [
     BookingoverviewComponent,
     BookingacceptanceComponent,
     BookingformComponent,
-    HeaderComponent,
     FooterComponent,
     RegisterpageComponent,
     QRscannerComponent,
-    RegisteracceptanceComponent
+    RegisteracceptanceComponent,
   ],
   imports: [
     RouterModule.forRoot(
