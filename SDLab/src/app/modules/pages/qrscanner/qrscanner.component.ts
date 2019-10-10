@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookingformService } from 'src/app/core/services/bookingform.service';
 import Instascan from 'instascan';
 
 @Component({
@@ -7,58 +8,92 @@ import Instascan from 'instascan';
   styleUrls: ['./qrscanner.component.css']
 })
 export class QRscannerComponent implements OnInit {
+  private validCodes = [];
+  private videoElement = document.getElementById('preview');
+  private opts = {
+    video: this.videoElement,
+    backgroundScan: true,
+    refractoryPeriod: 5000,
+    scanPeriod: 1
+  };
+  private scanner = new Instascan.Scanner(this.opts);
 
-  constructor() { }
+  constructor(private service: BookingformService) { }
 
-  ngOnInit() {
-    const opts = {
-      video: document.getElementById('preview'),
-      backgroundScan: false,
-      refractoryPeriod: 5000,
-      scanPeriod: 15
-    };
-    const scanner = new Instascan.Scanner(opts);
-    let scannedCode;
-    // Temporary list for testing
-    const bookings = ['1234', '4567', '7899'];
+  // Fill the list with all valid QR codes in the database
+  fillValidCodes() {
+    this.service.getBoekingen().subscribe(actionArray => {
+      let dataobject;
+      actionArray.map(item => {
+        dataobject = item.payload.doc.data();
+        if (dataobject.qrcode) {
+          console.log(dataobject.qrcode);
+          const now = new Date().getTime();
+          if (now >= Date.parse(dataobject.begintime) && now < Date.parse(dataobject.endtime)) {
+            this.validCodes.push(dataobject.qrcode);
+            console.log(this.validCodes);
+          }
+        }
+      });
+    });
+  }
 
-    scanner.addListener('scan', function(content) {
+  // Check the scanned code against the list of valid codes
+  checkCode(QRvalue) {
+    this.fillValidCodes();
+    if (this.validCodes.includes(QRvalue)) {
+      this.validCodes.length = 0;
+      return true;
+    } else {
+      this.validCodes.length = 0;
+      return false;
+    }
+  }
+
+  // Starts the scanning process and changes the screen depending on the result of checkCode()
+  // TODO: Use property and style binding instead of getElementById. This was tested and didn't work properly.
+  // TODO: The camera isn't displayed, but does turn on and scan codes. Probably an issue with the combination of Instascan and Angular
+  processScan() {
+    this.scanner.addListener('scan', (content) => {
       console.log(content);
+      let scannedCode;
       scannedCode = content;
-      if (checkCode(scannedCode)) {
+      if (this.checkCode(scannedCode)) {
         document.getElementById('returnmessage').innerHTML = 'Deze student mag de ruimte in!';
-        document.getElementById('body').style.backgroundColor = 'green';
-        setTimeout(function() {
-          document.getElementById('returnmessage').innerHTML = '';
-          document.getElementById('body').style.backgroundColor = 'white';
-        }, 5000);
+        document.getElementById('indexbody').style.backgroundColor = 'green';
+        document.getElementById('qrbody').style.backgroundColor = 'green';
       } else {
         document.getElementById('returnmessage').innerHTML = 'MAG NIET!';
-        document.getElementById('body').style.backgroundColor = 'red';
-        setTimeout(function() {
-          document.getElementById('returnmessage').innerHTML = '';
-          document.getElementById('body').style.backgroundColor = 'white';
-        }, 5000);
+        document.getElementById('indexbody').style.backgroundColor = 'red';
+        document.getElementById('qrbody').style.backgroundColor = 'red';
       }
+      setTimeout(() => {
+        document.getElementById('returnmessage').innerHTML = '';
+        document.getElementById('background').style.backgroundColor = '';
+        document.getElementById('qrbody').style.backgroundColor = '';
+      }, 5000);
 
     });
+  }
 
+  // Shows error message when there's no camera
+  startCamera() {
     Instascan.Camera.getCameras().then(cameras => {
       if (cameras.length > 0) {
-        scanner.start(cameras[0]);
+        this.scanner.start(cameras[0]);
       } else {
         console.error('Please enable Camera!');
       }
     });
+  }
 
-    function checkCode(QRvalue) {
-      // todo check if QRvalue is in database and timestamp matches
-      if (bookings.includes(scannedCode)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
+  ngOnInit() {
+    this.startCamera();
+    this.fillValidCodes();
+    this.processScan();
+
+
+
   }
 
 }
