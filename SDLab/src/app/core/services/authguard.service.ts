@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AngularFireAuth} from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { User } from 'src/app/shared/models/user.model';
@@ -18,13 +18,14 @@ export class AuthguardService implements CanActivate {
   user = firebase.auth();
   user$: Observable<User>;
 
-  constructor(private firebaseAuth: AngularFireAuth,
+  constructor(
+    private firebaseAuth: AngularFireAuth,
     private afs: AngularFirestore,
-        private router: Router) {
+    private router: Router) {
     this.firebaseAuth.authState.subscribe(auth => this.authState = auth);
     this.user$ = this.firebaseAuth.authState.pipe(
       switchMap(user => {
-          // Logged in
+        // Logged in
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
@@ -32,12 +33,12 @@ export class AuthguardService implements CanActivate {
           return of(null);
         }
       })
-    )
+    );
   }
 
   googleLogin() {
     return this.firebaseAuth.auth.signInWithPopup(
-        new firebase.auth.GoogleAuthProvider()
+      new firebase.auth.GoogleAuthProvider()
     );
   }
 
@@ -51,14 +52,14 @@ export class AuthguardService implements CanActivate {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
-    const data = { 
-      uid: user.uid, 
-      email: user.email, 
-      displayName: user.displayName, 
+    const data = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
       photoURL: user.photoURL
-    } 
+    };
 
-    return userRef.set(data, { merge: true })
+    return userRef.set(data, { merge: true });
 
   }
 
@@ -68,15 +69,15 @@ export class AuthguardService implements CanActivate {
   }
 
   logout() {
-      return this.firebaseAuth.auth.signOut();
+    return this.firebaseAuth.auth.signOut();
   }
 
   canActivate() {
-    return this.authState !== null;;
+    return this.authState !== null;
   }
 
   canActivateAdmin() {
     this.user.updateCurrentUser;
-    return (this.authState !== null) && (this.user.currentUser.email == 'gideon.bruijn@gmail.com');
+    return (this.authState !== null) && (this.user.currentUser.email === 'gideon.bruijn@gmail.com');
   }
 }
