@@ -29,7 +29,6 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AuthguardService } from './core/services/authguard.service';
 import { BookingformService } from './core/services/bookingform.service';
 import { RegisterService } from './core/services/register.service';
-import { BookingacceptanceComponent } from './modules/pages/bookingacceptance/bookingacceptance.component';
 import { RegisteracceptanceComponent } from './modules/pages/registeracceptance/registeracceptance.component';
 import { AuthGuard } from './core/services/auth.guard';
 
