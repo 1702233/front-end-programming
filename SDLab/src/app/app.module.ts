@@ -23,7 +23,6 @@ import { CalenderComponent } from './modules/components/calender/calender.compon
 import { BookingformComponent } from './modules/components/bookingform/bookingform.component';
 import { RegisterpageComponent } from './modules/pages/registerpage/registerpage.component';
 // core
-import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 // services
 import { AuthguardService } from './core/services/authguard.service';
@@ -55,7 +54,6 @@ const appRoutes: Routes = [
     BookingoverviewComponent,
     BookingacceptanceComponent,
     BookingformComponent,
-    HeaderComponent,
     FooterComponent,
     RegisterpageComponent,
     QRscannerComponent,
