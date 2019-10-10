@@ -56,7 +56,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     RegisterpageComponent,
-    QRscannerComponent
+    QRscannerComponent,
     RegisteracceptanceComponent
   ],
   imports: [
