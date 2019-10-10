@@ -17,4 +17,8 @@ export class RegisterService {
   getRegistration(id: string) {
     return this.firestore.collection('registraties/' + id).snapshotChanges();
   }
+
+  getIngediendeRegistrations() {
+    return this.firestore.collection('registraties', ref => ref.where('status', '==', 'Ingediend')).snapshotChanges();
+  }
 }

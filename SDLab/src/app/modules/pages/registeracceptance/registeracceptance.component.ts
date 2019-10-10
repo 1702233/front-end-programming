@@ -21,7 +21,7 @@ export class RegisteracceptanceComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.service.getRegistrations().subscribe(actionArray => {
+    this.service.getIngediendeRegistrations().subscribe(actionArray => {
       this.list = actionArray.map(item => {
         return {
           id: item.payload.doc.id,
@@ -34,16 +34,16 @@ export class RegisteracceptanceComponent implements OnInit {
   acceptRegistration(id: string) {
     if (confirm('Weet je zeker dat je deze registratie wilt goedkeuren?')) {
       this.firestore.collection('registraties').doc(id).update({
-        'status': 'goedgekeurd',
+        status: 'goedgekeurd',
       });
-      this.toastr.success('Success', 'Boeking goedgekeurd');
+      this.toastr.success('Success', 'Registratie goedgekeurd');
     }
   }
 
   denyRegistration(id: string) {
     if (confirm('Weet je zeker dat je deze registratie wilt afkeuren?')) {
       this.firestore.collection('registraties').doc(id).update({
-        'status': 'afgekeurd',
+        status: 'afgekeurd',
       });
       this.toastr.warning('Success', 'Registratie afgekeurd.');
     }

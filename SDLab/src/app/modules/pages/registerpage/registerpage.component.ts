@@ -28,14 +28,16 @@ export class RegisterpageComponent implements OnInit {
       studentenmail: '',
       studentennummer: null,
       voornaam: '',
-      achternaam: ''
+      achternaam: '',
+      status: 'Ingediend',
     };
   }
 
   onSubmit(form: NgForm) {
-    let data = Object.assign({}, form.value);
+    const data = Object.assign({}, form.value);
     delete data.id;
     if (form.value.id == null) {
+      console.log(data);
       this.firestore.collection('registraties').add(data);
     } else {
       this.firestore.doc('registraties/' + form.value.id).update(data);
