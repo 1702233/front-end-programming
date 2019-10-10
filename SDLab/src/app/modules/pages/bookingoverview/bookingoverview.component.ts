@@ -41,12 +41,27 @@ export class BookingoverviewComponent implements OnInit {
     }
   }
 
-  // changeView() {
-  //   console.log("In functie");
-  //   let selectElement = document.getElementById('#boekingdropdown') as HTMLSelectElement;
-  //   let output = selectElement.options[selectElement.selectedIndex].value;
-  //   console.log(output);
-  // }
+  changeView(event: any) {
+    const dropdownvalue = event.target.value;
+    if (dropdownvalue !== 'all') {
+      this.service.setFilter(dropdownvalue, this.user.currentUser.email).subscribe(actionArray => {
+        this.list = actionArray.map(item => {
+          return {
+            id: item.payload.doc.id,
+            ...item.payload.doc.data()
+          } as Bookingform;
+        });
+      });
+    } else {
+      this.service.getBoekingByGmail(this.user.currentUser.email).subscribe(actionArray => {
+        this.list = actionArray.map(item => {
+          return {
+            id: item.payload.doc.id,
+            ...item.payload.doc.data()
+          } as Bookingform;
+        });
+      });
+    }
 
-
+  }
 }
