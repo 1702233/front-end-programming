@@ -3,6 +3,7 @@ import { BookingformService } from 'src/app/core/services/bookingform.service';
 import { Bookingform } from 'src/app/shared/models/bookingform.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-bookingoverview',
@@ -10,21 +11,20 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./bookingoverview.component.css']
 })
 export class BookingoverviewComponent implements OnInit {
-  list: Bookingform[];
-
-  constructor(private service: BookingformService,
-              private firestore: AngularFirestore,
-              private toastr: ToastrService) { }
+  list : Bookingform[];
+  user = firebase.auth();
+  constructor(private service : BookingformService,
+    private firestore: AngularFirestore,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.service.getBoekingen().subscribe(actionArray => {
-      this.list = actionArray.map(item => {
-        return {
-          id: item.payload.doc.id,
-          ...item.payload.doc.data()
-        } as Bookingform;
-      });
-    });
+      this.service.getBoekingByGmail(this.user.currentUser.email).subscribe(actionArray =>{
+        this.list = actionArray.map(item => {
+          return {
+            id : item.payload.doc.id,
+            ...item.payload.doc.data()} as Bookingform
+        })
+      })
   }
 
   onEdit(booking: Bookingform) {
