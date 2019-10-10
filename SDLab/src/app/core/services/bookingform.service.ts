@@ -15,11 +15,11 @@ export class BookingformService {
   }
 
   getIngediendeBoekingen() {
-    return this.firestore.collection('boekingen', ref => ref.where('status', '==', "ingediend")).snapshotChanges();
+    return this.firestore.collection('boekingen', ref => ref.where('status', '==', 'ingediend')).snapshotChanges();
   }
 
   getGoedgekeurdeBoekingen() {
-    return this.firestore.collection('boekingen', ref => ref.where('status', '==', "goedgekeurd")).snapshotChanges();
+    return this.firestore.collection('boekingen', ref => ref.where('status', '==', 'goedgekeurd')).snapshotChanges();
   }
 
   getBoekingByGmail(gmail: string) {

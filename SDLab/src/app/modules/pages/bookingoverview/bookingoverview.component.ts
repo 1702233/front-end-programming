@@ -15,7 +15,7 @@ export class BookingoverviewComponent implements OnInit {
   user = firebase.auth();
   constructor(private service : BookingformService,
     private firestore: AngularFirestore,
-    private toastr:ToastrService) { }
+    private toastr: ToastrService) { }
 
   ngOnInit() {
       this.service.getBoekingByGmail(this.user.currentUser.email).subscribe(actionArray =>{
@@ -26,16 +26,27 @@ export class BookingoverviewComponent implements OnInit {
         })
       })
   }
-  
-  onEdit(booking:Bookingform) {
-    this.service.formData =Object.assign({},booking);
+
+  onEdit(booking: Bookingform) {
+    this.service.formData = Object.assign({}, booking);
 
   }
 
-  onDelete(id:string) {
-    if(confirm("Weet je zeker dat je deze boeking wilt verwijderen?")){
-      this.firestore.doc('boekingen/'+id).delete();
-      this.toastr.warning("deleted sucessfully","Boeking")
+  onDelete(id: string) {
+    if (confirm('Weet je zeker dat je deze boeking wilt verwijderen?')) {
+      this.firestore.collection('boekingen').doc(id).update({
+        status: 'geannuleerd',
+      });
+      this.toastr.warning('deleted sucessfully', 'Boeking');
     }
   }
+
+  // changeView() {
+  //   console.log("In functie");
+  //   let selectElement = document.getElementById('#boekingdropdown') as HTMLSelectElement;
+  //   let output = selectElement.options[selectElement.selectedIndex].value;
+  //   console.log(output);
+  // }
+
+
 }
