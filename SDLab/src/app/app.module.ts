@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { LoginpageComponent } from './modules/pages/loginpage/loginpage.component';
 import { BookingoverviewComponent } from './modules/pages/bookingoverview/bookingoverview.component';
+import { BookingacceptanceComponent } from './modules/pages/bookingacceptance/bookingacceptance.component';
 // components
 import { CalenderComponent } from './modules/components/calender/calender.component';
 import { BookingformComponent } from './modules/components/bookingform/bookingform.component';
@@ -27,7 +28,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AuthguardService } from './core/services/authguard.service';
 import { BookingformService } from './core/services/bookingform.service';
 import { RegisterService } from './core/services/register.service';
-import { BookingacceptanceComponent } from './modules/pages/bookingacceptance/bookingacceptance.component';
+import { AuthGuard } from './core/services/auth.guard';
 
 const appRoutes: Routes = [
   /// path : '**' als laatste toevoegen (rest of paths) met
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'booking-overview', component: BookingoverviewComponent },
   { path: 'register', component: RegisterpageComponent },
-  { path: 'booking-acceptance', component: BookingacceptanceComponent },
+  { path: 'booking-acceptance', component: BookingacceptanceComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
