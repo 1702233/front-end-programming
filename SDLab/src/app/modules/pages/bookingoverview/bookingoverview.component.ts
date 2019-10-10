@@ -44,7 +44,7 @@ export class BookingoverviewComponent implements OnInit {
   changeView(event: any) {
     const dropdownvalue = event.target.value;
     if (dropdownvalue !== 'all') {
-      this.service.setFilter(dropdownvalue).subscribe(actionArray => {
+      this.service.setFilter(dropdownvalue, this.user.currentUser.email).subscribe(actionArray => {
         this.list = actionArray.map(item => {
           return {
             id: item.payload.doc.id,
@@ -53,7 +53,7 @@ export class BookingoverviewComponent implements OnInit {
         });
       });
     } else {
-      this.service.getBoekingen().subscribe(actionArray => {
+      this.service.getBoekingByGmail(this.user.currentUser.email).subscribe(actionArray => {
         this.list = actionArray.map(item => {
           return {
             id: item.payload.doc.id,

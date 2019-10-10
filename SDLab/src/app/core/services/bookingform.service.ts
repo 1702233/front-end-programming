@@ -22,8 +22,9 @@ export class BookingformService {
     return this.firestore.collection('boekingen', ref => ref.where('status', '==', 'goedgekeurd')).snapshotChanges();
   }
 
-  setFilter(filter) {
-    return this.firestore.collection('boekingen', ref => ref.where('status', '==', filter)).snapshotChanges();
+  setFilter(filter, gmail) {
+    return this.firestore.collection('boekingen', ref => ref.where('status', '==', filter)
+      .where('googlemail', '==', gmail)).snapshotChanges();
   }
   getBoekingByGmail(gmail: string) {
     //als je beheerder bent krijg je alle boekingen 
