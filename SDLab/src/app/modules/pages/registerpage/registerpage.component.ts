@@ -41,7 +41,7 @@ export class RegisterpageComponent implements OnInit {
       this.firestore.doc('registraties/' + form.value.id).update(data);
     }
     this.resetForm(form);
-    this.toastr.success('submitted succesfully', 'Registratie gedaan.');
+    this.toastr.success('submitted succesfully', 'Succesvol geregistreerd.');
   }
 
   ngOnInit() {
