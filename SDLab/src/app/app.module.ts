@@ -38,7 +38,7 @@ const appRoutes: Routes = [
   { path: 'booking-overview', component: BookingoverviewComponent },
   { path: 'register', component: RegisterpageComponent },
   { path: 'booking-acceptance', component: BookingacceptanceComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path : 'qrscanner', component : QRscannerComponent }
   ];
 

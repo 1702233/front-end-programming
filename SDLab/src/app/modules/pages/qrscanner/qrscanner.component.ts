@@ -69,7 +69,7 @@ export class QRscannerComponent implements OnInit {
       }
       setTimeout(() => {
         document.getElementById('returnmessage').innerHTML = '';
-        document.getElementById('background').style.backgroundColor = '';
+        document.getElementById('indexbody').style.backgroundColor = '';
         document.getElementById('qrbody').style.backgroundColor = '';
       }, 5000);
 
