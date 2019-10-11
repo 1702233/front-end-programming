@@ -18,4 +18,8 @@ export class AppComponent {
   canActivateAdmin() {
     return this.Authguard.canActivateAdmin();
   }
+
+  canNotActivate() {
+    return this.Authguard.canNotActivate();
+  }
 }

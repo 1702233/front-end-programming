@@ -80,4 +80,8 @@ export class AuthguardService implements CanActivate {
     this.user.updateCurrentUser;
     return (this.authState !== null) && (this.user.currentUser.email === 'gideon.bruijn@gmail.com');
   }
+
+  canNotActivate() {
+    return this.authState === null;
+  }
 }
