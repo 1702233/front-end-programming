@@ -74,6 +74,9 @@ export class AuthguardService implements CanActivate {
     return this.firebaseAuth.auth.signOut();
   }
 
+
+  // Deze functie kijkt of de meegegeven gmail in de database staat, zoja dan kijkt die of er een status van goedgekeurd bij is.
+
   // checkUsers(gmail) {
   //   const users = this.afs.collection('registraties').doc(gmail);
   //   users.get()
@@ -81,11 +84,11 @@ export class AuthguardService implements CanActivate {
   //     .then(doc => {
   //       console.log('&@&#@*#@*$@&*$&*@$&*@$&*@$@&*^*&$@*^&@$^@^$@$^@$^$^@^');
   //       console.log(gmail);
-  //       // if (!doc.exists) {
-  //       //   console.log('No such document!');
-  //       //   // redirect naar regiterpage
-  //       //   window.location.replace('/register');
-  //       // } else {
+  //       if (!doc.exists) {
+  //         console.log('No such document!');
+  //         // redirect naar regiterpage
+  //         window.location.replace('/register');
+  //       } else {
   //       if (doc.get('status') == 'goedgekeurd') {
   //         console.log('Document data:', doc.data());
   //         window.location.replace('/home');

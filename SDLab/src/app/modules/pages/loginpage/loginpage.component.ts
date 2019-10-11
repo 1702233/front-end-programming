@@ -54,6 +54,9 @@ export class LoginpageComponent implements OnInit {
   checkUser() {
     const gmail = this.user.email;
     console.log('checkUser krijgt: ' + gmail + ' mee!');
+
+    // Deze methode zal moeten kijken of er in de database een gmail bestaat zoals deze
+    // this.Authguard.checkUsers(gmail);
   }
 
   ngOnInit() {
