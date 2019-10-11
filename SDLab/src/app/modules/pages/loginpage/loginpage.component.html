@@ -1,4 +1,4 @@
 <button *ngIf="canNotActivate()" id="googleLogin" (click)="googleLogin()"><i class="fa fa-google"></i> Sign in with Google</button>
 <div *ngIf="canActivate()"> Je bent ingelogd als: {{onSignIn()}}{{user.email}} </div>
-<button *ngIf="canActivate()" (click)="logout()"> Logout with google</button>
+<button *ngIf="canActivate()" id="googleLogout" (click)="logout()"><i class="fa fa-google"></i> Logout with google</button>
 <div *ngIf="canActivateAdmin()"> Je bent ingelogd als admin.</div>
