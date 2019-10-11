@@ -36,8 +36,8 @@
         </div>
 
         <div class="form-group">
-            <label>Gmail</label>
-            <input name="googlemail" id="googlemail" #googlemail="ngModel" [(ngModel)]="service.formData.googlemail" class="form-control" placeholder="gmail@gmail.com" readonly>
+            <!-- <label>Gmail</label> -->
+            <input hidden name="googlemail" id="googlemail" #googlemail="ngModel" [(ngModel)]="service.formData.googlemail" class="form-control" placeholder="gmail@gmail.com" readonly>
             <div *ngIf="googlemail.invalid && googlemail.touched" class="validation-error">Dit veld is verplicht!</div>
         </div>
 
