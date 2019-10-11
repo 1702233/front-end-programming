@@ -3,6 +3,7 @@ import { AuthguardService } from 'src/app/core/services/authguard.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { RegisterService } from 'src/app/core/services/register.service';
 import * as firebase from 'firebase/app';
+import { CheckboxControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-loginpage',
@@ -15,9 +16,9 @@ export class LoginpageComponent implements OnInit {
   constructor(
     private firebaseAuth: AngularFireAuth,
     private Authguard: AuthguardService,
-    private service: RegisterService ) {
+    private service: RegisterService) {
 
-    }
+  }
 
   user = firebase.auth().currentUser;
 
@@ -50,8 +51,12 @@ export class LoginpageComponent implements OnInit {
     console.log('Email: ' + this.user.email); // This is null if the 'email' scope is not present.
   }
 
-  ngOnInit() {
+  checkUser() {
+    const gmail = this.user.email;
+    console.log('checkUser krijgt: ' + gmail + ' mee!');
+  }
 
+  ngOnInit() {
   }
 
 }

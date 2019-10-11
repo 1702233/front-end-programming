@@ -8,6 +8,7 @@ import { auth } from 'firebase/app';
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { Registerform } from 'src/app/shared/models/registerform.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class AuthguardService implements CanActivate {
   authState: firebase.User;
   user = firebase.auth();
   user$: Observable<User>;
+  userList: Registerform[];
 
   constructor(
     private firebaseAuth: AngularFireAuth,
@@ -71,6 +73,28 @@ export class AuthguardService implements CanActivate {
   logout() {
     return this.firebaseAuth.auth.signOut();
   }
+
+  // checkUsers(gmail) {
+  //   const users = this.afs.collection('registraties').doc(gmail);
+  //   users.get()
+  //     .toPromise()
+  //     .then(doc => {
+  //       console.log('&@&#@*#@*$@&*$&*@$&*@$&*@$@&*^*&$@*^&@$^@^$@$^@$^$^@^');
+  //       console.log(gmail);
+  //       // if (!doc.exists) {
+  //       //   console.log('No such document!');
+  //       //   // redirect naar regiterpage
+  //       //   window.location.replace('/register');
+  //       // } else {
+  //       if (doc.get('status') == 'goedgekeurd') {
+  //         console.log('Document data:', doc.data());
+  //         window.location.replace('/home');
+  //       } else {
+  //         console.log('In else');
+  //         window.location.replace('/register');
+  //       }
+  //     });
+  // }
 
   canActivate() {
     return this.authState !== null;
