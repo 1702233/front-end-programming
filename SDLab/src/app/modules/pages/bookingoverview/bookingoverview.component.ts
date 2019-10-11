@@ -11,20 +11,24 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./bookingoverview.component.css']
 })
 export class BookingoverviewComponent implements OnInit {
-  list : Bookingform[];
+  list: Bookingform[];
   user = firebase.auth();
-  constructor(private service : BookingformService,
-    private firestore: AngularFirestore,
-    private toastr: ToastrService) { }
+  public qrcode: string = null;
+  public hiddenDiv = 'none';
+
+  constructor(private service: BookingformService,
+              private firestore: AngularFirestore,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
-      this.service.getBoekingByGmail(this.user.currentUser.email).subscribe(actionArray =>{
-        this.list = actionArray.map(item => {
-          return {
-            id : item.payload.doc.id,
-            ...item.payload.doc.data()} as Bookingform
-        })
-      })
+    this.service.getBoekingByGmail(this.user.currentUser.email).subscribe(actionArray => {
+      this.list = actionArray.map(item => {
+        return {
+          id: item.payload.doc.id,
+          ...item.payload.doc.data()
+        } as Bookingform;
+      });
+    });
   }
 
   onEdit(booking: Bookingform) {
@@ -62,6 +66,16 @@ export class BookingoverviewComponent implements OnInit {
         });
       });
     }
-
   }
+
+  createQRCode(newValue: string): void {
+    this.hiddenDiv = 'block';
+    this.qrcode = newValue;
+    console.log(this.qrcode);
+  }
+
+  HideQRCode() {
+    this.hiddenDiv = 'none';
+  }
+
 }

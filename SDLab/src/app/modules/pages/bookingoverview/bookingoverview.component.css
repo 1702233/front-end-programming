@@ -1,7 +1,20 @@
+#qrcode {
+    margin-left: 25px;
+    margin-bottom: 25px;
+}
 h1 {
     text-align: center;
 }
 
+#hideButton {
+    margin-top: 25px;
+}
+
+#qrcodedata {
+    color: #0645AD;
+    text-decoration: underline;
+    cursor: pointer;
+}
 select {
     display: block;
     margin: 0 auto;

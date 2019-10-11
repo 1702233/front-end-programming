@@ -13,12 +13,12 @@ import { NgForm } from '@angular/forms';
 })
 export class BookingacceptanceComponent implements OnInit {
   list: Bookingform[];
-  
-  
+
+
   constructor(private Authguard: AuthguardService,
-    private service: BookingformService,
-    private firestore: AngularFirestore,
-    private toastr: ToastrService) { }
+              private service: BookingformService,
+              private firestore: AngularFirestore,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.service.getIngediendeBoekingen().subscribe(actionArray => {
@@ -26,37 +26,37 @@ export class BookingacceptanceComponent implements OnInit {
         return {
           id: item.payload.doc.id,
           ...item.payload.doc.data()
-        } as Bookingform
-      })
-    })
+        } as Bookingform;
+      });
+    });
   }
 
   onAccept(id: string) {
-    if (confirm("Weet je zeker dat je deze boeking wilt goedkeuren?")) {
-      this.firestore.collection("boekingen").doc(id).update({
-        "status": "goedgekeurd",
+    if (confirm('Weet je zeker dat je deze boeking wilt goedkeuren?')) {
+      this.firestore.collection('boekingen').doc(id).update({
+        status: 'goedgekeurd',
       });
-      this.toastr.success("Success", "Boeking goedgekeurd");
-      this.firestore.collection("boekingen").doc(id).update({ "qrcode": this.qrcodeStringGenerator(7) })
+      this.toastr.success('Success', 'Boeking goedgekeurd');
+      this.firestore.collection('boekingen').doc(id).update({ qrcode: this.qrcodeStringGenerator(7) });
     }
     // TODO update google calendar.
 
   }
 
   onDeny(id: string) {
-    if (confirm("Weet je zeker dat je deze boeking wilt afkeuren?")) {
-      this.firestore.collection("boekingen").doc(id).update({
-        "status": "afgekeurd",
+    if (confirm('Weet je zeker dat je deze boeking wilt afkeuren?')) {
+      this.firestore.collection('boekingen').doc(id).update({
+        status: 'afgekeurd',
       });
-      this.toastr.warning("Success", "Boeking afgekeurd.");
+      this.toastr.warning('Success', 'Boeking afgekeurd.');
     }
 
   }
 
   qrcodeStringGenerator(length) {
-    var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var result = '';
-    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let result = '';
+    for (let i = length; i > 0; --i) { result += chars[Math.floor(Math.random() * chars.length)]; }
     return result;
   }
 
