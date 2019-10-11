@@ -63,7 +63,7 @@ export class QRscannerComponent implements OnInit {
         document.getElementById('indexbody').style.backgroundColor = 'green';
         document.getElementById('qrbody').style.backgroundColor = 'green';
       } else {
-        document.getElementById('returnmessage').innerHTML = 'MAG NIET!';
+        document.getElementById('returnmessage').innerHTML = 'Deze student mag de ruimte nu niet in!';
         document.getElementById('indexbody').style.backgroundColor = 'red';
         document.getElementById('qrbody').style.backgroundColor = 'red';
       }
